@@ -3,8 +3,8 @@
   <!-- 等级标签 -->
   <scroll-view scroll-x class="level-tabs">
     <view 
-      class="tab-item {{currentLevel === item ? 'active' : ''}}"
-      wx:for="{{[1,2,3,4,5,6,7,8]}}"
+      class="tab-item {{currentLevel === index + 1 ? 'active' : ''}}"
+      wx:for="[1,2,3,4,5,6,7,8]"
       wx:key="*this"
       data-level="{{item}}"
       bindtap="switchLevel"

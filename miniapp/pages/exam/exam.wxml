@@ -12,7 +12,7 @@
       <text class="section-title">选择等级</text>
       <view class="level-list">
         <view 
-          class="level-option {{selectedLevel === item ? 'active' : ''}}"
+          class="level-option {{selectedLevel === index + 1 ? 'active' : ''}}"
           wx:for="[1,2,3,4,5,6,7,8]"
           wx:key="*this"
           data-level="{{item}}"
