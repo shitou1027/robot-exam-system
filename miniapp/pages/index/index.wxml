@@ -1,71 +1,85 @@
 <!-- 首页 -->
 <view class="container">
-  <!-- 欢迎区域 -->
-  <view class="welcome-section">
-    <text class="title">机器人等级考试</text>
-    <text class="subtitle">青少年技术等级考试刷题平台</text>
+  <!-- 头部 -->
+  <view class="header">
+    <text class="header-title">机器人等级考试</text>
+    <text class="header-subtitle">青少年技术等级考试刷题平台</text>
   </view>
 
-  <!-- 等级选择 -->
-  <view class="level-section">
-    <text class="section-title">选择等级</text>
-    <view class="level-grid">
-      <view 
-        class="level-item {{currentLevel === item ? 'active' : ''}}"
-        wx:for="[1,2,3,4,5,6,7,8]"
-        wx:key="*this"
-        data-level="{{item}}"
-        bindtap="selectLevel"
-      >
-        <text class="level-num">{{item}}级</text>
-        <text class="level-name">{{levelNames[item-1]}}</text>
+  <!-- 当前等级卡片 -->
+  <view class="level-card">
+    <view class="level-header">
+      <text class="level-title">当前等级</text>
+      <view class="level-badge">{{currentLevel}}级</view>
+    </view>
+    <view class="level-name">{{levelNames[currentLevel-1]}}</view>
+    <scroll-view scroll-x class="level-scroll">
+      <view class="level-list">
+        <view
+          class="level-btn {{currentLevel === item ? 'active' : ''}}"
+          wx:for="[1,2,3,4,5,6,7,8]"
+          wx:key="*this"
+          data-level="{{item}}"
+          bindtap="selectLevel"
+        >
+          {{item}}级
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="section">
+    <text class="section-title">开始刷题</text>
+    <view class="action-grid">
+      <view class="action-item" bindtap="startPractice">
+        <view class="action-icon-circle practice">📚</view>
+        <text class="action-name">顺序练习</text>
+        <text class="action-tip">按顺序刷题</text>
+      </view>
+      <view class="action-item" bindtap="startMockExam">
+        <view class="action-icon-circle exam">📝</view>
+        <text class="action-name">模拟考试</text>
+        <text class="action-tip">30题/60分钟</text>
       </view>
     </view>
   </view>
 
-  <!-- 快捷入口 -->
-  <view class="quick-actions">
-    <view class="action-card" bindtap="startPractice">
-      <text class="action-icon">📚</text>
-      <text class="action-title">顺序练习</text>
-      <text class="action-desc">按顺序刷题</text>
-    </view>
-    <view class="action-card" bindtap="startMockExam">
-      <text class="action-icon">📝</text>
-      <text class="action-title">模拟考试</text>
-      <text class="action-desc">30题/60分钟</text>
-    </view>
-    <view class="action-card" bindtap="continueWrong">
-      <text class="action-icon">❌</text>
-      <text class="action-title">错题重做</text>
-      <text class="action-desc">巩固薄弱点</text>
-    </view>
-    <view class="action-card" bindtap="viewFavorites">
-      <text class="action-icon">⭐</text>
-      <text class="action-title">收藏题目</text>
-      <text class="action-desc">查看收藏</text>
+  <!-- 辅助功能 -->
+  <view class="section">
+    <text class="section-title">辅助功能</text>
+    <view class="action-grid">
+      <view class="action-item small" bindtap="continueWrong">
+        <text class="action-icon-small wrong">❌</text>
+        <text class="action-name">错题重做</text>
+      </view>
+      <view class="action-item small" bindtap="viewFavorites">
+        <text class="action-icon-small fav">⭐</text>
+        <text class="action-name">收藏题目</text>
+      </view>
     </view>
   </view>
 
-  <!-- 学习统计 -->
-  <view class="stats-section">
-    <text class="section-title">学习统计</text>
-    <view class="stats-grid">
-      <view class="stat-item">
-        <text class="stat-value">{{stats.totalQuestions}}</text>
-        <text class="stat-label">已做题</text>
+  <!-- 统计数据 -->
+  <view class="stats-card">
+    <view class="stat-row">
+      <view class="stat-box">
+        <text class="stat-num">{{stats.totalQuestions}}</text>
+        <text class="stat-text">已做题</text>
       </view>
-      <view class="stat-item">
-        <text class="stat-value">{{stats.correctRate}}%</text>
-        <text class="stat-label">正确率</text>
+      <view class="stat-box">
+        <text class="stat-num">{{stats.correctRate}}%</text>
+        <text class="stat-text">正确率</text>
       </view>
-      <view class="stat-item">
-        <text class="stat-value">{{stats.streak}}</text>
-        <text class="stat-label">连续天数</text>
+    </view>
+    <view class="stat-row">
+      <view class="stat-box">
+        <text class="stat-num">{{stats.streak}}</text>
+        <text class="stat-text">连续天数</text>
       </view>
-      <view class="stat-item">
-        <text class="stat-value">{{stats.totalExams}}</text>
-        <text class="stat-label">模拟考</text>
+      <view class="stat-box">
+        <text class="stat-num">{{stats.totalExams}}</text>
+        <text class="stat-text">模拟考</text>
       </view>
     </view>
   </view>
