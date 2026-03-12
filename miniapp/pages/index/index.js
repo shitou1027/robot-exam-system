@@ -4,6 +4,7 @@ Page({
   data: {
     currentLevel: 1,
     levelNames: ['入门', '基础', '进阶', '提高', '应用', '综合', '创新', '精通'],
+    levelList: [1,2,3,4,5,6,7,8],
     stats: {
       totalQuestions: 0,
       correctRate: 0,
@@ -13,6 +14,10 @@ Page({
   },
 
   onLoad() {
+    const savedLevel = wx.getStorageSync('currentLevel');
+    if (savedLevel) {
+      this.setData({ currentLevel: savedLevel });
+    }
     this.loadStats();
   },
 
