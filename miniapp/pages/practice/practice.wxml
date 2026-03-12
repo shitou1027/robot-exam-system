@@ -1,0 +1,63 @@
+<!-- 练习页面 -->
+<view class="container">
+  <!-- 等级标签 -->
+  <scroll-view scroll-x class="level-tabs">
+    <view 
+      class="tab-item {{currentLevel === item ? 'active' : ''}}"
+      wx:for="{{[1,2,3,4,5,6,7,8]}}"
+      wx:key="*this"
+      data-level="{{item}}"
+      bindtap="switchLevel"
+    >
+      {{item}}级
+    </view>
+  </scroll-view>
+
+  <!-- 功能卡片 -->
+  <view class="feature-grid">
+    <view class="feature-card" bindtap="startSequence">
+      <text class="feature-icon">📚</text>
+      <text class="feature-name">顺序练习</text>
+      <text class="feature-desc">按顺序刷题</text>
+    </view>
+    <view class="feature-card" bindtap="startRandom">
+      <text class="feature-icon">🎲</text>
+      <text class="feature-name">随机练习</text>
+      <text class="feature-desc">随机抽题练习</text>
+    </view>
+    <view class="feature-card" bindtap="startWrong">
+      <text class="feature-icon">❌</text>
+      <text class="feature-name">错题练习</text>
+      <text class="feature-desc">巩固薄弱知识点</text>
+    </view>
+    <view class="feature-card" bindtap="startFavorite">
+      <text class="feature-icon">⭐</text>
+      <text class="feature-name">收藏练习</text>
+      <text class="feature-desc">重点题目复习</text>
+    </view>
+  </view>
+
+  <!-- 历年真题 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">📝 历年真题</text>
+    </view>
+    <view class="year-grid">
+      <view class="year-card" wx:for="{{yearList}}" wx:key="year" data-year="{{item.year}}" bindtap="practiceByYear">
+        <text class="year-num">{{item.year}}</text>
+        <text class="year-label">年真题</text>
+        <text class="year-count">{{item.count}}题</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 知识点 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">🏷️ 知识点</text>
+    </view>
+    <view class="tag-cloud">
+      <view class="tag-item" wx:for="{{tags}}" wx:key="*this" data-tag="{{item}}" bindtap="practiceByTag">{{item}}</view>
+    </view>
+  </view>
+</view>

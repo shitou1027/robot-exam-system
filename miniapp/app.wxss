@@ -1,0 +1,66 @@
+/* 全局样式 */
+page {
+  font-size: 28rpx;
+  color: #333;
+  background: #f5f5f5;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: #fff;
+  border-radius: 50rpx;
+  font-weight: bold;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+}
+
+/* 通用卡片 */
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+/* 文字颜色 */
+.text-primary { color: #4CAF50; }
+.text-warning { color: #FF9800; }
+.text-danger { color: #F44336; }
+.text-gray { color: #999; }
+
+/* 间距 */
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+
+/* 弹性布局 */
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-1 { flex: 1; }
+
+/* 文本溢出 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

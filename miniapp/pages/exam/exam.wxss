@@ -1,0 +1,315 @@
+/* 考试页面样式 */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* 考试设置 */
+.exam-setup {
+  padding: 30rpx;
+}
+
+.setup-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.setup-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.setup-subtitle {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 等级选择 */
+.level-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.level-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.level-option {
+  width: calc(25% - 12rpx);
+  padding: 30rpx 0;
+  text-align: center;
+  background: #f5f5f5;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+}
+
+.level-option.active {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+}
+
+.level-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.level-option.active .level-text {
+  color: #4CAF50;
+}
+
+/* 设置项 */
+.config-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.config-item:last-child {
+  border-bottom: none;
+}
+
+.config-label {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.config-value {
+  font-size: 30rpx;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+/* 开始按钮 */
+.start-btn {
+  margin: 40rpx 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  border: none;
+}
+
+.start-btn::after {
+  border: none;
+}
+
+/* 考试说明 */
+.exam-tips {
+  background: #FFF8E1;
+  padding: 30rpx;
+  border-radius: 20rpx;
+}
+
+.tips-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #F57C00;
+  margin-bottom: 16rpx;
+}
+
+.tip-item {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 考试中 */
+.exam-running {
+  padding-bottom: 160rpx;
+}
+
+.exam-header {
+  background: #fff;
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.timer {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.timer.warning {
+  color: #F44336;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+
+.progress {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 答题卡 */
+.answer-sheet {
+  background: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.sheet-scroll {
+  white-space: nowrap;
+  padding: 0 20rpx;
+}
+
+.sheet-item {
+  display: inline-flex;
+  width: 72rpx;
+  height: 72rpx;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 28rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+}
+
+.sheet-item.current {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.sheet-item.answered {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+  color: #4CAF50;
+}
+
+/* 题目区域 */
+.question-area {
+  background: #fff;
+  padding: 40rpx;
+  min-height: 600rpx;
+}
+
+.question-title {
+  font-size: 34rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+  font-weight: 500;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.exam-option {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+}
+
+.exam-option.selected {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+}
+
+.option-label {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-right: 16rpx;
+}
+
+.option-text {
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;
+}
+
+/* 底部操作 */
+.exam-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.footer-btn {
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+  margin: 0;
+}
+
+.footer-btn.prev {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.footer-btn.next {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.footer-btn.submit {
+  background: linear-gradient(135deg, #FF9800, #F57C00);
+  color: #fff;
+}
+
+.footer-btn[disabled] {
+  opacity: 0.5;
+}
+
+.footer-btn::after {
+  border: none;
+}

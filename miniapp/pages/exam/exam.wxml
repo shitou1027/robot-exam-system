@@ -1,0 +1,101 @@
+<!-- 考试页面 -->
+<view class="container">
+  <!-- 考试设置卡片 -->
+  <view class="exam-setup" wx:if="{{!examStarted}}">
+    <view class="setup-header">
+      <text class="setup-title">📝 模拟考试</text>
+      <text class="setup-subtitle">选择等级开始考试</text>
+    </view>
+
+    <!-- 等级选择 -->
+    <view class="level-section">
+      <text class="section-title">选择等级</text>
+      <view class="level-list">
+        <view 
+          class="level-option {{selectedLevel === item ? 'active' : ''}}"
+          wx:for="[1,2,3,4,5,6,7,8]"
+          wx:key="*this"
+          data-level="{{item}}"
+          bindtap="selectLevel"
+        >
+          <text class="level-text">{{item}}级</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 考试设置 -->
+    <view class="config-section">
+      <view class="config-item">
+        <text class="config-label">题目数量</text>
+        <picker bindchange="onQuestionCountChange" value="{{questionCountIndex}}" range="{{questionCounts}}">
+          <view class="config-value">{{questionCounts[questionCountIndex]}}题</view>
+        </picker>
+      </view>
+      <view class="config-item">
+        <text class="config-label">考试时间</text>
+        <text class="config-value">60分钟</text>
+      </view>
+    </view>
+
+    <!-- 开始按钮 -->
+    <button class="start-btn" bindtap="startExam">开始考试</button>
+
+    <!-- 考试说明 -->
+    <view class="exam-tips">
+      <text class="tips-title">考试说明</text>
+      <text class="tip-item">• 考试期间请勿退出小程序</text>
+      <text class="tip-item">• 提交后不可修改答案</text>
+      <text class="tip-item">• 时间结束自动提交</text>
+      <text class="tip-item">• 及格分数为60分</text>
+    </view>
+  </view>
+
+  <!-- 考试中 -->
+  <view class="exam-running" wx:if="{{examStarted}}">
+    <!-- 顶部信息栏 -->
+    <view class="exam-header">
+      <text class="timer {{timeLeft < 300 ? 'warning' : ''}}">⏱️ {{formatTime(timeLeft)}}</text>
+      <text class="progress">{{currentIndex + 1}}/{{questions.length}}</text>
+    </view>
+
+    <!-- 答题卡 -->
+    <view class="answer-sheet">
+      <scroll-view scroll-x class="sheet-scroll">
+        <view 
+          class="sheet-item {{currentIndex === index ? 'current' : ''}} {{answers[index] ? 'answered' : ''}}"
+          wx:for="{{questions}}"
+          wx:key="index"
+          data-index="{{index}}"
+          bindtap="jumpToQuestion"
+        >
+          {{index + 1}}
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 题目内容 -->
+    <view class="question-area" wx:if="{{currentQuestion}}">
+      <view class="question-title">{{currentQuestion.content}}</view>
+      
+      <view class="options">
+        <view 
+          class="exam-option {{answers[currentIndex] === item.key ? 'selected' : ''}}"
+          wx:for="{{currentQuestion.options}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="selectAnswer"
+        >
+          <text class="option-label">{{item.key}}.</text>
+          <text class="option-text">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作 -->
+    <view class="exam-footer">
+      <button class="footer-btn prev" bindtap="prevQuestion" disabled="{{currentIndex === 0}}">上一题</button>
+      <button class="footer-btn next" bindtap="nextQuestion" wx:if="{{currentIndex < questions.length - 1}}">下一题</button>
+      <button class="footer-btn submit" bindtap="submitExam" wx:if="{{currentIndex === questions.length - 1}}">提交试卷</button>
+    </view>
+  </view>
+</view>
