@@ -34,7 +34,7 @@ Page({
   // 加载题目
   loadQuestions() {
     const { level, mode } = this.data;
-    
+
     wx.request({
       url: `${app.globalData.apiBaseUrl}/questions`,
       data: { level, limit: 50 },
@@ -48,6 +48,32 @@ Page({
           });
           this.checkFavorite();
         }
+      },
+      fail: () => {
+        // 临时：显示示例题目
+        const sampleQuestions = [
+          {
+            _id: '1',
+            content: '机器人结构中，起着支撑作用的部件是？',
+            type: 'single',
+            options: [
+              { key: 'A', content: '机座' },
+              { key: 'B', content: '电机' },
+              { key: 'C', content: '腰部' },
+              { key: 'D', content: '手臂' }
+            ],
+            answer: 'A',
+            explanation: '机座是机器人的基础部件，起到支撑整个机器人的作用。',
+            level: 1,
+            year: 2024,
+            difficulty: 'easy'
+          }
+        ];
+        this.setData({
+          questions: sampleQuestions,
+          currentQuestion: sampleQuestions[0],
+          progress: 100
+        });
       }
     });
   },

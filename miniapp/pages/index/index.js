@@ -28,11 +28,22 @@ Page({
       this.setData({
         stats: {
           totalQuestions: totalQuestions || 0,
-          correctRate: totalQuestions > 0 
-            ? Math.round((correctQuestions / totalQuestions) * 100) 
+          correctRate: totalQuestions > 0
+            ? Math.round((correctQuestions / totalQuestions) * 100)
             : 0,
           streak: streak || 0,
           totalExams: totalExams || 0
+        }
+      });
+    }
+    // 临时：显示默认数据用于展示
+    if (!userInfo || !userInfo.stats) {
+      this.setData({
+        stats: {
+          totalQuestions: 12,
+          correctRate: 75,
+          streak: 5,
+          totalExams: 3
         }
       });
     }
@@ -48,14 +59,14 @@ Page({
   // 开始顺序练习
   startPractice() {
     wx.navigateTo({
-      url: `/pages/practice/practice?level=${this.data.currentLevel}&mode=sequence`
+      url: `/pages/question/question?level=${this.data.currentLevel}&mode=sequence`
     });
   },
 
   // 开始模拟考试
   startMockExam() {
     wx.navigateTo({
-      url: `/pages/exam/exam?level=${this.data.currentLevel}&mode=mock`
+      url: `/pages/exam/exam?level=${this.data.currentLevel}`
     });
   },
 
