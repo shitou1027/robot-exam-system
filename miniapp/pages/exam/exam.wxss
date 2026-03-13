@@ -43,23 +43,25 @@
 }
 
 .level-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16rpx;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
 }
 
 .level-option {
-  width: calc(25% - 12rpx);
-  padding: 30rpx 0;
+  padding: 36rpx 0;
   text-align: center;
-  background: #f5f5f5;
+  background: linear-gradient(180deg, #f8f9fa 0%, #f0f0f0 100%);
   border-radius: 16rpx;
   border: 2rpx solid transparent;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+  transition: all 0.2s;
 }
 
 .level-option.active {
-  background: #E8F5E9;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
   border-color: #4CAF50;
+  box-shadow: 0 4rpx 16rpx rgba(76,175,80,0.3);
 }
 
 .level-text {
@@ -69,7 +71,7 @@
 }
 
 .level-option.active .level-text {
-  color: #4CAF50;
+  color: #fff;
 }
 
 /* 设置项 */
