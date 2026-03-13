@@ -32,14 +32,13 @@
 
 /* 功能卡片 */
 .feature-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 20rpx;
   gap: 20rpx;
 }
 
 .feature-card {
-  width: calc(50% - 10rpx);
   background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
   padding: 50rpx 20rpx;
   border-radius: 20rpx;
