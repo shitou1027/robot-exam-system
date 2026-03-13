@@ -240,7 +240,7 @@
 
 .exam-option {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 30rpx;
   background: #f8f9fa;
   border-radius: 16rpx;
@@ -257,12 +257,19 @@
   font-weight: bold;
   color: #4CAF50;
   margin-right: 16rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
 }
 
 .option-text {
   font-size: 30rpx;
   color: #333;
   flex: 1;
+  line-height: 1.6;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  padding-top: 4rpx;
 }
 
 /* 底部操作 */
